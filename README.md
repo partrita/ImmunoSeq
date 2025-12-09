@@ -1,21 +1,60 @@
 # ImmunoSeq
+
 Methods to predict antibody immunogenicity
 
-ImmunoSeq -- an interpretable and applicable method for immunogenicity prediction rooted in the biological principle of immune tolerance
+> ImmunoSeq -- an interpretable and applicable method for immunogenicity prediction rooted in the biological principle of immune tolerance
 
-### Installation Guide
-1. First check that you have installed python packages listed in requirements.txt.
-2. Then download paired human and mouse antibody sequence files from Observed Antibody Sequences (https://opig.stats.ox.ac.uk/webapps/oas/oas_paired/) and move them into `data/` folder
-3. Run `python prepare.py` to generate k-mer (k=8-12) peptide library for human proteins, oas paired human antibodies, as well as oas paired mouse antibodies
+## Installation Guide
 
-### Benchmark
-1. To run ADA correlation benchmark, use `python eval_ada_correlation.py`
-2. To run humanness classification benchmark, use `python eval_humanness_classification.py`
+1. Clone this repository
+
+```bash
+gh repo clone partrita/ImmunoSeq
+cd ImmunoSeq
+```
+
+2. Install python packages required
+
+```bash
+uv sync
+```
+
+3. (Optional) Download OAS paired antibody sequences
+
+```bash
+cd data/OAS_PAIRED_HUMAN
+bash bulk_download.
+```
+
+```bash
+cd data/OAS_PAIRED_MOUSE
+bash data/OAS_PAIRED_MOUSE/bulk_download.sh 
+```
+
+4. generate k-mer peptide library
+
+```bash
+uv run python src/prepare.py
+```
+
+This will generate `dump` files in `data/` folder. Be patient as it take a while.
+
+## Benchmark
+
+1. To run ADA correlation benchmark, use `uv run python  src/eval_ada_correlation.py`
+2. To run humanness classification benchmark, use `uv run python  src/eval_humanness_classification.py`
 3. To benchmark humanness classification on anbativ dataset, run `eval_abnativ.ipynb`
-4. To analyze Hu-mAb 25 antibody pairs, use `python eval_humab25.py`
-5. To perform sequence immunogenicity optimization, use `python infer.py`
+4. To analyze Hu-mAb 25 antibody pairs, use `uv run python  src/eval_humab25.py`
+5. To perform sequence immunogenicity optimization, use `uv run python  src/infer.py`
 
-### Citation
+## Usage
+
+```bash
+uv run python src/predict.py --input-file ./data/humab25_sequences.csv --output-file ./data/humab25_immunogenicity_predictions.csv
+```
+
+## Citation
+
 ```
 @article{bytedance2025ImmunoSeq,
   title={Antibody immunogenicity prediction and optimization with ImmunoSeq},
@@ -30,4 +69,4 @@ ImmunoSeq -- an interpretable and applicable method for immunogenicity predictio
 }
 ```
 
-Please address all questions to huangqiaojing@bytedance.com
+Please address all questions to `huangqiaojing@bytedance.com`

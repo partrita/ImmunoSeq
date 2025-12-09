@@ -6,3 +6,4 @@ scikit_learn==1.7.1
 seaborn==0.13.2
 torch==2.2.2
 torchmetrics==1.4.3
+click
