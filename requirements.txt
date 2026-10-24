@@ -2,8 +2,11 @@ bloom_filter2==2.0.0
 matplotlib==3.10.5
 numpy==2.3.2
 pandas==2.3.1
+pillow>=13.0.0
+fsspec>=2026.9.0
+tornado>=6.6
 scikit_learn==1.7.1
 seaborn==0.13.2
-torch==2.13.0
+torch>=2.10.0
 torchmetrics==1.4.3
 click
