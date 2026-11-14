@@ -12,4 +12,4 @@ seaborn==0.13.2
 setuptools>=84.1.0
 torch>=2.14.1
 torchmetrics==1.4.3
-tornado>=6.6
+tornado>=6.6.1
